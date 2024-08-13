@@ -15,8 +15,8 @@ public class AspectV6Advice {
 
         try {
             //@Before
-            log.info("[트랜잭션 시작] {}", joinPoint.getSignature());
-            Object result = joinPoint.proceed();
+            log.info("[트랜잭션 시작] {}", joinPoint.getSignature());//타켓에 대한 정보, 조언되는 메서드에 대한 설명을 반환
+            Object result = joinPoint.proceed();//💥@Around는 개발자가 직접 타겟의 실행을 해줘야한다. / @Around에서만 proced()가 가능하다.
             //@AfterReturning
             log.info("[트랜잭션 커밋] {}", joinPoint.getSignature());
             return result;
@@ -38,7 +38,7 @@ public class AspectV6Advice {
 
     //@After Retuning : 조인 포인트가 정상 완료 후 수행
     @AfterReturning(value = "hello.aop.order.aop.Pointcuts.orderAndService()", returning = "result")
-    public void doReturn(JoinPoint joinPoint, Object result) { //returning = "result"과 Objects result 명칭을 같게 해주면 리턴값을 받아옴.
+    public void doReturn(JoinPoint joinPoint, Object result) { //returning = "result"과 Objects result 명칭을 같게 해줘야 리턴값을 받아옴.
         log.info("[return] {} return={}", joinPoint.getSignature(), result);
         //💥주의! return result; (void)를 하지 않기에 반환값을 변경할 수 없음.
     }
