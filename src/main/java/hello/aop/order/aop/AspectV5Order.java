@@ -7,11 +7,18 @@ import org.aspectj.lang.annotation.Aspect;
 import org.springframework.core.annotation.Order;
 
 @Slf4j
-public class AspectV5Order {
+public class AspectV5Order {//껍데기
+
+    /**
+     * 어드바이스 순서
+     * - 어드바이서 순서는 기본적으로 보장하지 않음
+     * - ⭐클래스 단위임 순서를 부여 (어드바이스 단위 아님)
+     *   --  @Order(순서)
+     * */
 
     @Aspect
     @Order(2)
-    public static class LogAspect {
+    public static class LogAspect { //클래스로 분리해주기 (내부 OR 외부)
         @Around("hello.aop.order.aop.Pointcuts.allOrder()")
         public Object doLog(ProceedingJoinPoint joinPoint) throws Throwable {
             log.info("[log] {}", joinPoint.getSignature()); //join point 시그니처
@@ -21,7 +28,7 @@ public class AspectV5Order {
 
     @Aspect
     @Order(1)
-    public static class TxAspect {
+    public static class TxAspect { //클래스로 분리해주기 (내부 OR 외부)
         @Around("hello.aop.order.aop.Pointcuts.orderAndService()")
         public Object doTransaction(ProceedingJoinPoint joinPoint) throws Throwable {
 

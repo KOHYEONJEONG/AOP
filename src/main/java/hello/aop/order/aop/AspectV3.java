@@ -41,7 +41,7 @@ public class AspectV3 { //어드바이스 추가
     public Object doTransaction(ProceedingJoinPoint joinPoint) throws Throwable {
 
         try {
-            log.info("[트랜잭션 시작] {}", joinPoint.getSignature());
+            log.info("[트랜잭션 시작] {}", joinPoint.getSignature());//함수 정보
             Object result = joinPoint.proceed(); //실제 타켓 호출
             log.info("[트랜잭션 커밋] {}", joinPoint.getSignature());
             return result;

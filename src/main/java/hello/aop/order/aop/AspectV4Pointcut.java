@@ -8,6 +8,9 @@ import org.aspectj.lang.annotation.Aspect;
 @Slf4j
 @Aspect
 public class AspectV4Pointcut {
+    /**
+     * 외부에서 작성된 포인트컷 사용하기
+     * */
 
     @Around("hello.aop.order.aop.Pointcuts.allOrder()")
     public Object doLog(ProceedingJoinPoint joinPoint) throws Throwable {
