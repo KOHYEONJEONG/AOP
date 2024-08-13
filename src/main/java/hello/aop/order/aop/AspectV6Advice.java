@@ -16,6 +16,9 @@ public class AspectV6Advice {
      * 💥주의
      * @Around : joinPoint.proceed(); 을 무조건 해야한다.
      * @Before : 스프링이 다음 순서를 알고 있기 때문에 joinPoint.proceed(); 을 안해도 된다.
+     *
+     * 좋은 설계는 제약이 있는것이다.
+     * - 다른 개발자들의 고민도 줄어든다.
      * */
 
     //@Around : 메서드 호출 전/후에 수행, 조인 포인트 실행 여부 선택, 반환 값 변환, 예외 변환 등이 가능 (가장 강력한 어드바이스)
@@ -41,7 +44,7 @@ public class AspectV6Advice {
         }
     }
 
-    //@Before : 조인 포인트 실행 이전에 실행
+    //@Before : 조인 포인트 실행 이전에 실행( 타켓 실행 전에 한정해서 어떤 일을 함 )
     @Before("hello.aop.order.aop.Pointcuts.orderAndService()")
     public void doBefore(JoinPoint joinPoint) {
         log.info("[before] {}", joinPoint.getSignature());
@@ -51,6 +54,8 @@ public class AspectV6Advice {
     @AfterReturning(value = "hello.aop.order.aop.Pointcuts.orderAndService()", returning = "result")
     public void doReturn(JoinPoint joinPoint, Object result) { //returning = "result"과 Objects result 명칭을 같게 해줘야 리턴값을 받아옴.
         log.info("[return] {} return={}", joinPoint.getSignature(), result);
+        // [return] void hello.aop.order.OrderService.orderItem(String) return=null
+        // ㄴ service만 나오는듯(순서가 service 호출 -> repository 호출 -> repository 응답 -> service 응답)
         //💥주의! return result; (void)를 하지 않기에 반환값을 변경할 수 없음.
     }
 
