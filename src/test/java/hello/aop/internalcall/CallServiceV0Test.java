@@ -11,10 +11,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
 @Import(CallLogAspect.class)
-@SpringBootTest
+@SpringBootTest //스프링 컨테이너를 실행하기 위해서 넣어줘야 함.
 class CallServiceV0Test {
 
-    @Autowired CallServiceV0 callServiceV0;
+    //CallServiceV0는 aop 대상이기에 프록시한테 먹힌다.
+    @Autowired CallServiceV0 callServiceV0;//callServiceV0는 프록시
 
     @Test
     void external() {

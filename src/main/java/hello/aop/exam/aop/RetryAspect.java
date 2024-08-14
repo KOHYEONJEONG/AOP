@@ -13,7 +13,7 @@ public class RetryAspect {
     //@Around 어드바이스를 사용하는 이유는
     //재시도 할 때 언제 조인 포인트에 proceed를 호출할지를 지정할 수 있기 때문이다.
     @Around("@annotation(retry)")
-    public Object doRetry(ProceedingJoinPoint joinPoint, Retry retry) throws Throwable {
+    public Object doRetry(ProceedingJoinPoint joinPoint, Retry retry) throws Throwable {  //Retry retry로 해주면 Retry의 필드값을 꺼낼 수 있음.
         log.info("[retry] {} retry={}", joinPoint.getSignature(), retry);
 
         int maxRetry = retry.value();//4
