@@ -10,7 +10,7 @@ import org.aspectj.lang.annotation.*;
 public class AspectV6Advice {
     /**
      * 5.2.7버전 부터 동일한 @Aspect 안에서 동일한 조인포인트의 우선순위를 정했다.
-     * 실행순서 : @Around, @Before, @After,@AfterReturning, @AfterThrowing
+     * 💥실행순서 : @Around, @Before, @After,@AfterReturning, @AfterThrowing
      * 어드바이스가 적용되는 순서는 이렇게 적용되지만, 호출 순서와 리턴 순서는 반대라는 점
      *
      * 💥주의

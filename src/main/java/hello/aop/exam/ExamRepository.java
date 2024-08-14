@@ -12,8 +12,8 @@ public class ExamRepository {
     /**
      * 5번에 1번 실패하는 요청
      */
-    @Trace
-    @Retry(value = 4)
+    @Trace//로그 출력 AOP
+    @Retry(value = 4)//retry는 무조건 횟수를 지정해줘야 무한루프를 돌지 않는다.
     public String save(String itemId) {
         seq++;
         if (seq % 5 == 0) {

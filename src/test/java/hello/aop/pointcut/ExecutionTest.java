@@ -14,12 +14,14 @@ import static org.assertj.core.api.Assertions.*;
 @Slf4j
 public class ExecutionTest {
 
+    //AspectJExpressionPointcut을 사용하면 pointCut 문법을 넣을 수 있다.
     AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
     Method helloMethod;
 
     @BeforeEach
     public void init() throws NoSuchMethodException {
-        helloMethod = MemberServiceImpl.class.getMethod("hello", String.class);
+        //helloMethod: 여러 테스트에서 사용할 수 있게 변수에 넣어주자.
+        helloMethod = MemberServiceImpl.class.getMethod("hello", String.class);//메소드명, 파라미터 타입
     }
 
     @Test

@@ -10,7 +10,7 @@ public class ExamService {
 
     private final ExamRepository examRepository;
 
-    @Trace
+    @Trace//로그 출력 AOP
     public void request(String itemId) {
         examRepository.save(itemId);
     }

@@ -55,15 +55,17 @@ public class ParameterTest {
             log.info("[logArgs3] arg={}", arg);
         }
 
-        @Before("allMember() && this(obj)")
+        //this : 프록시
+        @Before("allMember() && this(obj)")//obj는 MemberService
         public void thisArgs(JoinPoint joinPoint, MemberService obj) {
             log.info("[this]{}, obj={}", joinPoint.getSignature(), obj.getClass());
         }
-
-        @Before("allMember() && target(obj)")
+        //target : 프록시 호출할 실제 대상
+        @Before("allMember() && target(obj)")//obj는 MemberService
         public void targetArgs(JoinPoint joinPoint, MemberService obj) {
             log.info("[target]{}, obj={}", joinPoint.getSignature(), obj.getClass());
         }
+
 
         @Before("allMember() && @target(annotation)")
         public void atTarget(JoinPoint joinPoint, ClassAop annotation) {

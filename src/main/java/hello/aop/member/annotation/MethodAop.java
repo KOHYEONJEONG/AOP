@@ -8,5 +8,5 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface MethodAop {
-    String value();
+    String value(); //에노테이션도 값을 받으려면 이걸 넣어주자.
 }

@@ -8,4 +8,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Trace {
+    //로그 출력 AOP
+    //TraceAspect.class에서 로그 출력 기능 넣어줌
 }
