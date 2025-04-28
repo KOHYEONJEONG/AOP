@@ -15,7 +15,7 @@ public class RetryAspect {
     @Around("@annotation(retry)")
     public Object doRetry(ProceedingJoinPoint joinPoint, Retry retry) throws Throwable {  //Retry retry로 해주면 Retry의 필드값을 꺼낼 수 있음.
         log.info("[retry] {} retry={}", joinPoint.getSignature(), retry);
-
+    //joinPoint: 원하는걸 조작 및 필요 시 조건문을 통해 다음으로 호출 안 할수도 있다.
         int maxRetry = retry.value();//4번까지 재시도
         
         Exception exceptionHolder = null;//만약 실패할경우 마지막에 터뜨릴 예외를 저장할 공간
