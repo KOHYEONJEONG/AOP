@@ -20,7 +20,7 @@ public class ExamTest {
     @Test
     void test() {
         for (int i = 0; i < 5; i++) {
-            log.info("client request i={}", i);
+            log.info("client request i={}", i);//첫 로그
             examService.request("data" + i);
         }
     }

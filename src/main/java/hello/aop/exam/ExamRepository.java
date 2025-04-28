@@ -17,6 +17,7 @@ public class ExamRepository {
     public String save(String itemId) {
         seq++;
         if (seq % 5 == 0) {
+            System.out.println("에러다!🍒🍒🍒🍒");
             throw new IllegalStateException("예외 발생");
         }
         return "ok";

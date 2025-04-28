@@ -13,6 +13,8 @@ public class TraceAspect {
      * hello.aop.exam.annotation.Trace는 직접 만든 어노테이션이다.
      * @annotation(hello.aop.exam.annotation.Trace) 포인트컷을 사용해서
      * @Trace가 붙은 메서드에 어드바이스를 적용한다
+     *
+     * trage :  어떤 동작이나 흐름을 따라가며 기록하거나 추적하는 것
      * */
     @Before("@annotation(hello.aop.exam.annotation.Trace)")
     public void doTrace(JoinPoint joinPoint) {
